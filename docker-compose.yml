@@ -1,7 +1,7 @@
 services:
   app:
     build: .
-    container_name: php-app
+    container_name: php-app2
     ports:
       - "8082:80"
     volumes:
@@ -11,7 +11,7 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: mysql-db
+    container_name: mysql-db2
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
@@ -25,7 +25,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: pma
+    container_name: pma2
     restart: always
     ports:
       - "8081:80"
