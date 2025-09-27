@@ -1,0 +1,66 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #f7f7f7;
+}
+
+/* Table Styling */
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+th,
+td {
+  padding: 10px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background: #4caf50;
+  color: white;
+}
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Buttons */
+.delete-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.delete-btn:hover {
+  background: #c0392b;
+}
+.edit-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.edit-btn:hover {
+  background: #2980b9;
+}
+
+/* Messages */
+.success {
+  color: green;
+  font-weight: bold;
+}
+
+.logout {
+  display: inline;
+  margin-top: 15px;
+  text-align: center;
+  color: #3498db;
+  text-decoration: none;
+}
