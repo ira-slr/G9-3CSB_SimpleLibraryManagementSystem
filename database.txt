@@ -1,0 +1,45 @@
+-- Users table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,  -- use VARCHAR(255) for future password hashing
+    role ENUM('user','librarian') NOT NULL
+);
+
+-- Books table
+CREATE TABLE books (
+    book_id VARCHAR(20) PRIMARY KEY,   -- e.g., BK001
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    publication_date DATE,
+    category VARCHAR(100),
+    cover_image VARCHAR(255),
+    description TEXT,
+    status ENUM('available','borrowed') DEFAULT 'available',
+    borrowed_by VARCHAR(50) NULL
+);
+
+-- Insert sample users
+INSERT INTO users (username, password, role)
+VALUES 
+    ('john_doe', 'password123', 'user'),
+    ('librarian_amy', 'securepass', 'librarian');
+
+-- Insert sample books
+INSERT INTO books (book_id, title, author, publication_date, category, cover_image, description, status, borrowed_by)
+VALUES
+    ('BK001', 'To Kill a Mockingbird', 'Harper Lee', '1960-07-11', 'Fiction',
+     'mockingbird.jpg',
+     'A novel about racial injustice in the Deep South.', 'available', NULL),
+    ('BK002', '1984', 'George Orwell', '1949-06-08', 'Dystopian',
+     '1984.jpg',
+     'A chilling depiction of a totalitarian regime and surveillance state.', 'available', NULL),
+    ('BK003', 'The Great Gatsby', 'F. Scott Fitzgerald', '1925-04-10', 'Classic',
+     'gatsby.jpg',
+     'A critique of the American Dream set in the Roaring Twenties.', 'available', NULL),
+    ('BK004', 'The Pragmatic Programmer', 'Andrew Hunt and David Thomas', '1999-10-30', 'Programming',
+     'pragmatic_programmer.jpg',
+     'Practical tips and techniques for effective software development.', 'available', NULL),
+    ('BK005', 'Clean Code', 'Robert C. Martin', '2008-08-11', 'Programming',
+     'clean_code.jpg',
+     'A handbook of agile software craftsmanship.', 'available', NULL);

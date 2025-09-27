@@ -1,63 +1,69 @@
 <?php
 session_start();
-require_once __DIR__ . "/config/database.php";
-$message = "";
+include 'config/database.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username'] ?? '');
-    $password = trim($_POST['password'] ?? '');
+if (isset($_POST['register'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $role = $_POST['role'];
 
-    if ($username === '' || $password === '') {
-        $message = "Please enter username and password.";
+    $check = $conn->query("SELECT * FROM users WHERE username='$username'");
+    if ($check->num_rows > 0) {
+        $reg_error = "Username already exists!";
     } else {
-        $db = new Database();
-        $conn = $db->getConnection();
+        $conn->query("INSERT INTO users (username, password, role) VALUES ('$username','$password','$role')");
+        $reg_success = "Registration successful! You can now log in.";
+    }
+}
 
-        // plain text password check (per your request)
-        $stmt = $conn->prepare("SELECT id, username, role, password FROM users WHERE username = :username LIMIT 1");
-        $stmt->execute([':username' => $username]);
-        $user = $stmt->fetch();
+if (isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-        if ($user && $password === $user['password']) {
-            // login success
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = $user['role'];
+    $result = $conn->query("SELECT * FROM users WHERE username='$username' AND password='$password'");
+    if ($result->num_rows == 1) {
+        $user = $result->fetch_assoc();
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['role'] = $user['role'];
 
-            if ($user['role'] === 'librarian') {
-                header("Location: librarian.php");
-                exit;
-            } else {
-                header("Location: user.php");
-                exit;
-            }
+        if ($user['role'] == 'librarian') {
+            header("Location: librarian.php");
         } else {
-            $message = "Invalid username or password.";
+            header("Location: user.php");
         }
+        exit;
+    } else {
+        $login_error = "Invalid username or password!";
     }
 }
 ?>
-<!doctype html>
+
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Library — Login</title>
-</head>
-<body>
-  <h1>Library Login</h1>
+    <head>
+        <title>Login / Register</title>
+    </head>
+    <body>
+        <h2>Login</h2>
+        <form method="POST" action="">
+            <label>Username:</label><input type="text" name="username" required><br>
+            <label>Password:</label><input type="text" name="password" required><br>
+            <button type="submit" name="login">Login</button>
+        </form>
+        <?php if(isset($login_error)) echo "<p style='color:red;'>$login_error</p>"; ?>
 
-  <?php if ($message): ?>
-    <p style="color: red;"><?php echo htmlspecialchars($message); ?></p>
-  <?php endif; ?>
-
-  <form method="post" action="">
-    <label>Username</label><br>
-    <input type="text" name="username" required><br><br>
-
-    <label>Password</label><br>
-    <input type="password" name="password" required><br><br>
-
-    <button type="submit">Login</button>
-  </form>
-</body>
+        <h2>Register</h2>
+        <form method="POST" action="">
+            <label>Username:</label><input type="text" name="username" required><br>
+            <label>Password:</label><input type="text" name="password" required><br>
+            <label>Role:</label>
+            <select name="role">
+                <option value="user">User</option>
+                <option value="librarian">Librarian</option>
+            </select><br>
+            <button type="submit" name="register">Register</button>
+        </form>
+        <?php if(isset($reg_error)) echo "<p style='color:red;'>$reg_error</p>"; ?>
+        <?php if(isset($reg_success)) echo "<p style='color:green;'>$reg_success</p>"; ?>
+    </body>
 </html>
