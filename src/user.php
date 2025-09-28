@@ -96,13 +96,8 @@ $books = fetch_books($conn);
 <html>
 <head>
     <meta charset="utf-8">
-    <title>User Dashboard</title>
-    <style>
-        table { border-collapse: collapse; width: 100%; }
-        th, td { padding: 6px 8px; border: 1px solid #ccc; text-align: left; }
-        form.inline { display: inline; }
-        #searchInput { padding: 4px 6px; width: 250px; margin-bottom: 10px; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../assets/css/user.css">
+    <title>User Dashboard</title
 </head>
 <body>
 <h1>Welcome, <?php echo htmlspecialchars($username); ?> (User)</h1>

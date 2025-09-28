@@ -69,7 +69,7 @@ $result = $conn->query("SELECT * FROM books ORDER BY book_id ASC");
 
     <!-- ✅ ADD BOOK FORM -->
     <h3>Add Book</h3>
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form method="POST" action="" enctype="multipart/form-data" class="add-book-form">
         <label>Title:</label><input type="text" name="title" required><br>
         <label>Author:</label><input type="text" name="author" required><br>
         <label>Publication Date:</label><input type="date" name="publication_date"><br>
@@ -94,6 +94,7 @@ $result = $conn->query("SELECT * FROM books ORDER BY book_id ASC");
             <th>Category</th>
             <th>Cover</th>
             <th>Description</th>
+            <th>Status</th>
             <th>Actions</th>
         </tr>
         <?php while($book = $result->fetch_assoc()): ?>
@@ -109,6 +110,13 @@ $result = $conn->query("SELECT * FROM books ORDER BY book_id ASC");
                 <?php endif; ?>
             </td>
             <td><?php echo $book['description']; ?></td>
+             <td>
+                <?php if($book['status'] == 'available'): ?>
+                    <span class="status available">Available</span>
+                <?php else: ?>
+                    <span class="status unavailable">Unavailable</span>
+                <?php endif; ?>
+            </td>
             <td>
                 <!-- Edit -->
                 <form method="GET" action="./edit.php" style="display:inline;">
