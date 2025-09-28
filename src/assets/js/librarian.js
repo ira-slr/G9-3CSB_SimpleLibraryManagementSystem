@@ -2,5 +2,5 @@ function confirmDelete(form) {
   if (confirm("Are you sure you want to delete this book?")) {
     form.submit();
   }
-  return false; // Prevent default until confirmed
+  return false; 
 }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'config/database.php'; // ✅ use same connection as other pages
+include 'config/database.php'; 
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'librarian') {
     header("Location: login.php");
@@ -12,7 +12,6 @@ if (!$id) {
     die("Invalid book ID.");
 }
 
-// Fetch book info
 $stmt = $conn->prepare("SELECT * FROM books WHERE book_id = ?");
 $stmt->bind_param("s", $id);
 $stmt->execute();
@@ -22,7 +21,6 @@ if (!$book) {
     die("Book not found.");
 }
 
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title       = $_POST['title'];
     $author      = $_POST['author'];
@@ -30,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $category    = $_POST['category'];
     $description = $_POST['description'];
 
-    // Keep old cover if not replaced
     $cover_image = $book['cover_image'];
     if (isset($_FILES['cover_image']) && $_FILES['cover_image']['error'] == 0) {
         $cover_image = "assets/images/" . basename($_FILES['cover_image']['name']);

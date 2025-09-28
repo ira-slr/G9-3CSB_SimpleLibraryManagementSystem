@@ -1,33 +1,41 @@
-/* General Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
   background: #f7f7f7;
 }
 
-/* Table Styling */
 table {
-  width: 80%;
+  width: 95%;
+  margin: 25px auto;
   border-collapse: collapse;
-  margin: 20px 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background: white;
+  border-radius: 8px;
+  overflow: hidden;
 }
+
 th,
 td {
   padding: 10px 15px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
+
 th {
-  background: #4caf50;
+  background: #4a90e2; 
   color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
+
+td {
+  vertical-align: top;
+}
+
 tr:hover {
   background-color: #f1f1f1;
 }
 
-/* Buttons */
 .delete-btn {
   background: #e74c3c;
   color: white;
@@ -36,9 +44,11 @@ tr:hover {
   border-radius: 4px;
   cursor: pointer;
 }
+
 .delete-btn:hover {
   background: #c0392b;
 }
+
 .edit-btn {
   background: #3498db;
   color: white;
@@ -47,20 +57,111 @@ tr:hover {
   border-radius: 4px;
   cursor: pointer;
 }
+
 .edit-btn:hover {
   background: #2980b9;
 }
 
-/* Messages */
 .success {
-  color: green;
-  font-weight: bold;
+  text-align: center;
+  background: #dff0d8;
+  padding: 10px;
+  border-radius: 6px;
+  color: #3c763d;
+  margin: 15px auto;
+  width: 70%;
+  font-size: 14px;
 }
 
 .logout {
-  display: inline;
-  margin-top: 15px;
+  display: block;
   text-align: center;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: bold;
   color: #3498db;
-  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.logout:hover {
+  color: #21618c;
+}
+
+h2 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #34495e;
+  margin-top: 30px;
+  border-left: 5px solid #4a90e2;
+  padding-left: 10px;
+}
+
+.add-book-form {
+  background: #ffffff;
+  padding: 20px;
+  width: 70%;
+  margin: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.add-book-form label {
+  display: inline-block;
+  width: 150px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.add-book-form input,
+.add-book-form textarea,
+.add-book-form button {
+  width: calc(100% - 160px);
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.add-book-form input[type="file"] {
+  border: none;
+}
+
+.add-book-form button {
+  background: #4a90e2; 
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s;
+}
+
+.add-book-form button:hover {
+  background: #3a7ac8; 
+}
+
+td img {
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.status.available {
+  background: #4a90e2;
+  color: #fff;
+}
+
+.status.unavailable {
+  background: #e74c3c;
+  color: #fff;
 }

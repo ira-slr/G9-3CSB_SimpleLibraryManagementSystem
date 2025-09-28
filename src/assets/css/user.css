@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f9fc;
+    margin: 0;
+    padding: 20px;
+    color: #2c3e50;
+}
+
+h1 {
+    text-align: center;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #2c3e50;
+    margin-top: 25px;
+    border-left: 5px solid #3498db;
+    padding-left: 10px;
+}
+
+form.inline button {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+form.inline button:hover {
+    background: #c0392b;
+}
+
+#searchInput {
+    display: block;
+    margin: 15px auto;
+    padding: 10px 12px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.3s;
+}
+
+#searchInput:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 6px rgba(52, 152, 219, 0.5);
+}
+
+table {
+    border-collapse: collapse;
+    width: 95%;
+    margin: 20px auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th {
+    background: #3498db;
+    color: #fff;
+    text-align: left;
+    padding: 12px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+tr:hover {
+    background: #f9f9f9;
+}
+
+button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button[type="submit"] {
+    margin: 2px;
+}
+
+button[value="Borrow"], form button:contains("Borrow") {
+    background: #2ecc71;
+    color: white;
+}
+
+form button:hover {
+    opacity: 0.9;
+}
+
+form button:contains("Return") {
+    background: #f39c12;
+    color: white;
+}
+
+td:last-child {
+    font-size: 13px;
+    font-style: italic;
+    color: #7f8c8d;
+}

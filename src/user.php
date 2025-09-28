@@ -2,7 +2,6 @@
 session_start();
 include 'config/database.php';
 
-// ✅ Check if logged in and role is 'user'
 if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'user') {
     header("Location: login.php");
     exit;
@@ -10,7 +9,6 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'user') {
 
 $username = $_SESSION['username'];
 
-// ✅ Handle actions (logout, borrow, return)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action']) && $_POST['action'] === 'logout') {
         session_unset();
@@ -40,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// ✅ Fetch books (with optional search)
 function fetch_books($conn, $search = '') {
     if ($search !== '') {
         $stmt = $conn->prepare("SELECT book_id, title, author, publication_date, status, borrowed_by 
@@ -59,7 +56,6 @@ function fetch_books($conn, $search = '') {
     }
 }
 
-// ✅ For AJAX search
 if (isset($_GET['ajax_search'])) {
     $books = fetch_books($conn, trim($_GET['ajax_search']));
     foreach ($books as $b) {
@@ -96,18 +92,12 @@ $books = fetch_books($conn);
 <html>
 <head>
     <meta charset="utf-8">
-    <title>User Dashboard</title>
-    <style>
-        table { border-collapse: collapse; width: 100%; }
-        th, td { padding: 6px 8px; border: 1px solid #ccc; text-align: left; }
-        form.inline { display: inline; }
-        #searchInput { padding: 4px 6px; width: 250px; margin-bottom: 10px; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../assets/css/user.css">
+    <title>User Dashboard</title
 </head>
 <body>
 <h1>Welcome, <?php echo htmlspecialchars($username); ?> (User)</h1>
 
-<!-- ✅ Logout -->
 <form method="post" class="inline">
     <input type="hidden" name="action" value="logout">
     <button type="submit">Logout</button>
