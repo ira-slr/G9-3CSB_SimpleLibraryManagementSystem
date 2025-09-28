@@ -1,15 +1,11 @@
-/* ...existing code... */
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f6f9fc;
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    /* Remove flex here to allow vertical scroll if needed */
 }
 
-/* Center the forms vertically and horizontally */
 .main-center-wrapper {
     min-height: 100vh;
     display: flex;
@@ -17,15 +13,13 @@ body {
     align-items: center;
 }
 
-/* Container for both forms */
 .forms-wrapper {
     display: flex;
-    gap: 40px; /* space between login and register */
+    gap: 40px; 
     justify-content: center;
     align-items: flex-start;
 }
 
-/* Each form card */
 .form-box {
     background: #fff;
     padding: 30px 40px;
@@ -44,7 +38,6 @@ body {
     padding-left: 8px;
 }
 
-/* Labels & Inputs */
 label {
     font-weight: bold;
     display: block;
@@ -68,7 +61,6 @@ input:focus, select:focus {
     outline: none;
 }
 
-/* Buttons */
 button {
     width: 10;
     padding: 12px;
@@ -86,7 +78,6 @@ button:hover {
     background: #c0392b;
 }
 
-/* Messages */
 p {
     margin-top: 10px;
     font-size: 14px;

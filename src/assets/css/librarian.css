@@ -1,11 +1,9 @@
-/* General Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
   background: #f7f7f7;
 }
 
-/* Table Styling */
 table {
   width: 95%;
   margin: 25px auto;
@@ -23,7 +21,6 @@ td {
   border-bottom: 1px solid #ddd;
 }
 
-/* 🎨 Changed to blue */
 th {
   background: #4a90e2; 
   color: white;
@@ -39,7 +36,6 @@ tr:hover {
   background-color: #f1f1f1;
 }
 
-/* Buttons */
 .delete-btn {
   background: #e74c3c;
   color: white;
@@ -66,7 +62,6 @@ tr:hover {
   background: #2980b9;
 }
 
-/* Messages */
 .success {
   text-align: center;
   background: #dff0d8;
@@ -101,12 +96,10 @@ h2 {
 h3 {
   color: #34495e;
   margin-top: 30px;
-  /* 🎨 Changed border color to blue */
   border-left: 5px solid #4a90e2;
   padding-left: 10px;
 }
 
-/* === ADD BOOK FORM === */
 .add-book-form {
   background: #ffffff;
   padding: 20px;
@@ -138,7 +131,6 @@ h3 {
   border: none;
 }
 
-/* 🎨 Changed to blue */
 .add-book-form button {
   background: #4a90e2; 
   color: #fff;
@@ -148,18 +140,15 @@ h3 {
   transition: background 0.3s;
 }
 
-/* 🎨 Changed hover color to darker blue */
 .add-book-form button:hover {
   background: #3a7ac8; 
 }
 
-/* === CATALOG TABLE === */
 td img {
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-/* === STATUS BADGES === */
 .status {
   padding: 5px 10px;
   border-radius: 12px;
@@ -167,7 +156,6 @@ td img {
   font-weight: bold;
 }
 
-/* 🎨 Changed to blue */
 .status.available {
   background: #4a90e2;
   color: #fff;

@@ -1,13 +1,12 @@
 <?php
 session_start();
-include 'config/database.php'; // ✅ Use first code's connection ($conn)
+include 'config/database.php'; 
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'librarian') {
     header("Location: login.php");
     exit;
 }
 
-/* ---------- ADD BOOK (from first code) ---------- */
 if (isset($_POST['add_book'])) {
     $lastBook = $conn->query("SELECT book_id FROM books ORDER BY book_id DESC LIMIT 1");
     if ($lastBook->num_rows == 0) {
@@ -39,7 +38,6 @@ if (isset($_POST['add_book'])) {
     $success = "Book added successfully! (ID: $book_id)";
 }
 
-/* ---------- DELETE BOOK (from second code, adapted) ---------- */
 if (isset($_POST['delete_id'])) {
     $deleteId = $_POST['delete_id'];
     $deleteQuery = $conn->prepare("DELETE FROM books WHERE book_id = ?");
@@ -53,7 +51,6 @@ if (isset($_POST['delete_id'])) {
     }
 }
 
-/* ---------- FETCH BOOKS ---------- */
 $result = $conn->query("SELECT * FROM books ORDER BY book_id ASC");
 ?>
 <!DOCTYPE html>
@@ -67,7 +64,6 @@ $result = $conn->query("SELECT * FROM books ORDER BY book_id ASC");
 <body>
     <h2>Welcome, <?php echo $_SESSION['username']; ?> (Librarian)</h2>
 
-    <!-- ✅ ADD BOOK FORM -->
     <h3>Add Book</h3>
     <form method="POST" action="" enctype="multipart/form-data" class="add-book-form">
         <label>Title:</label><input type="text" name="title" required><br>
@@ -83,7 +79,6 @@ $result = $conn->query("SELECT * FROM books ORDER BY book_id ASC");
     <?php if (isset($_GET['deleted'])) echo "<p class='success'>✅ Book deleted successfully.</p>"; ?>
     <?php if (isset($_GET['updated'])) echo "<p class='success'>✅ Book updated successfully.</p>"; ?>
 
-    <!-- ✅ CATALOG TABLE -->
     <h3>📚 Catalog</h3>
     <table border="1">
         <tr>
@@ -118,12 +113,10 @@ $result = $conn->query("SELECT * FROM books ORDER BY book_id ASC");
                 <?php endif; ?>
             </td>
             <td>
-                <!-- Edit -->
                 <form method="GET" action="./edit.php" style="display:inline;">
                     <input type="hidden" name="id" value="<?php echo $book['book_id']; ?>">
                     <input type="submit" value="Edit" class="edit-btn">
                 </form>
-                <!-- Delete -->
                 <form method="POST" onsubmit="return confirmDelete(this);" style="display:inline;">
                     <input type="hidden" name="delete_id" value="<?php echo $book['book_id']; ?>">
                     <input type="submit" value="Delete" class="delete-btn">
