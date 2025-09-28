@@ -1,41 +1,41 @@
 <?php
-session_start();
-include 'config/database.php';
+    session_start();
+    include 'config/database.php';
 
-if (isset($_POST['register'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $role = $_POST['role'];
+    if (isset($_POST['register'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $role = $_POST['role'];
 
-    $check = $conn->query("SELECT * FROM users WHERE username='$username'");
-    if ($check->num_rows > 0) {
-        $reg_error = "Username already exists!";
-    } else {
-        $conn->query("INSERT INTO users (username, password, role) VALUES ('$username','$password','$role')");
-        $reg_success = "Registration successful! You can now log in.";
-    }
-}
-
-if (isset($_POST['login'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $result = $conn->query("SELECT * FROM users WHERE username='$username' AND password='$password'");
-    if ($result->num_rows == 1) {
-        $user = $result->fetch_assoc();
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['role'] = $user['role'];
-
-        if ($user['role'] == 'librarian') {
-            header("Location: librarian.php");
+        $check = $conn->query("SELECT * FROM users WHERE username='$username'");
+        if ($check->num_rows > 0) {
+            $reg_error = "Username already exists!";
         } else {
-            header("Location: user.php");
+            $conn->query("INSERT INTO users (username, password, role) VALUES ('$username','$password','$role')");
+            $reg_success = "Registration successful! You can now log in.";
         }
-        exit;
-    } else {
-        $login_error = "Invalid username or password!";
     }
-}
+
+    if (isset($_POST['login'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $result = $conn->query("SELECT * FROM users WHERE username='$username' AND password='$password'");
+        if ($result->num_rows == 1) {
+            $user = $result->fetch_assoc();
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['role'] = $user['role'];
+
+            if ($user['role'] == 'librarian') {
+                header("Location: librarian.php");
+            } else {
+                header("Location: user.php");
+            }
+            exit;
+        } else {
+            $login_error = "Invalid username or password!";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
