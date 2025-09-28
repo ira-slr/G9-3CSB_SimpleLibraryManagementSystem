@@ -29,17 +29,17 @@ VALUES
 INSERT INTO books (book_id, title, author, publication_date, category, cover_image, description, status, borrowed_by)
 VALUES
     ('BK001', 'To Kill a Mockingbird', 'Harper Lee', '1960-07-11', 'Fiction',
-     'mockingbird.jpg',
+     './assets/images/tokillamockingbird.jpeg',
      'A novel about racial injustice in the Deep South.', 'available', NULL),
     ('BK002', '1984', 'George Orwell', '1949-06-08', 'Dystopian',
-     '1984.jpg',
+     './assets/images/1984.jpeg',
      'A chilling depiction of a totalitarian regime and surveillance state.', 'available', NULL),
     ('BK003', 'The Great Gatsby', 'F. Scott Fitzgerald', '1925-04-10', 'Classic',
-     'gatsby.jpg',
+     './assets/images/thegreatgatsby.jpeg',
      'A critique of the American Dream set in the Roaring Twenties.', 'available', NULL),
     ('BK004', 'The Pragmatic Programmer', 'Andrew Hunt and David Thomas', '1999-10-30', 'Programming',
-     'pragmatic_programmer.jpg',
+     './assets/images/pragmaticprogrammer.jpeg',
      'Practical tips and techniques for effective software development.', 'available', NULL),
     ('BK005', 'Clean Code', 'Robert C. Martin', '2008-08-11', 'Programming',
-     'clean_code.jpg',
+     './assets/images/cleancode.jpeg',
      'A handbook of agile software craftsmanship.', 'available', NULL);

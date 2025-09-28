@@ -22,7 +22,7 @@ td {
 }
 
 th {
-  background: #4a90e2; 
+  background: #3498db; 
   color: white;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -73,18 +73,25 @@ tr:hover {
   font-size: 14px;
 }
 
-.logout {
-  display: block;
-  text-align: center;
-  margin-top: 30px;
-  font-size: 16px;
+
+.logOut{
+  padding: 6px 12px;
+  margin-left: 50px;
+  border-radius: 6px;
+  border: none;
   font-weight: bold;
-  color: #3498db;
-  transition: color 0.3s;
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: #e74c3c;
+  color: white;
 }
 
-.logout:hover {
-  color: #21618c;
+.logOut:hover {
+  background-color: #c0392b;
+}
+
+.logOut:active{
+  opacity: 0.7;
 }
 
 h2 {
