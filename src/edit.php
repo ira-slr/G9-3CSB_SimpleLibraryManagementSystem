@@ -82,7 +82,7 @@
                 <button type="submit" class="save-btn">💾 Save Changes</button>
             </form>
 
-            <button onclick="window.location.href='http://localhost:8082/librarian.php'" class="logOut">Log Out</button>
+            <button onclick="window.location.href='http://localhost:8082/librarian.php'" class="logOut">Back</button>
            
         </div>
         <script src="./assets/js/edit.js"></script>
