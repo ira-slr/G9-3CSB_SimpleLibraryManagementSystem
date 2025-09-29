@@ -1,5 +1,5 @@
 <?php
-$servername = "db";  // matches docker-compose service
+$servername = "db";  
 $username = "user";
 $password = "pass";
 $dbname = "testdb";
