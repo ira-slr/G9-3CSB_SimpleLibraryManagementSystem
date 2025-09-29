@@ -11,7 +11,6 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: mysql-db2
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
@@ -19,19 +18,21 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: pass
     ports:
-      - "3307:3306"
+      - "3307:3306"  
     volumes:
       - db_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: pma2
+    image: phpmyadmin/phpmyadmin:latest
     restart: always
     ports:
       - "8081:80"
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: root
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: rootpassword
 
 volumes:
   db_data:
